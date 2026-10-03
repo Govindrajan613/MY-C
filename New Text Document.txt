@@ -1,0 +1,1 @@
+java -Dwebdriver.chrome.driver="C:\Users\MYLVENKA\Downloads\chromedriver_win32\chromedriver.exe" -jar selenium-server-standalone-3.141.59.jar -role node -hub http://192.168.0.184:4445/grid/register/

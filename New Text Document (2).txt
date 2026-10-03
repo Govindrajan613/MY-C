@@ -1,0 +1,1427 @@
+TestNG using maven
+package rediff;
+
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
+
+import org.testng.annotations.Test;
+
+public class Sprint2 {
+	WebDriver driver;
+
+	@Test
+	public void testsprint2()
+	{
+		System.setProperty("webdriver.chrome.driver","C:\\Users\\MYLVENKA\\Downloads\\chromedriver_win32\\chromedriver.exe");
+	
+	driver=new ChromeDriver();
+	driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+	driver.manage().window().maximize();
+
+	
+	
+	driver.get("https://mail.rediff.com/cgi-bin/login.cgi");
+	 driver.findElement(By.linkText("Create a new account")).click();
+	System.out.println("We are currently on the following URL" +driver.getCurrentUrl());
+	
+	driver.findElement(By.xpath("//*[@id=\"country\"]")).click();
+		 Select s = new Select(driver.findElement(By.xpath("//*[@id=\"country\"]")));
+		 
+		List <WebElement> op = s.getOptions();
+	      int size = op.size();
+	      for(int i =0; i<size ; i++){
+	         String options = op.get(i).getText();
+	      
+	      
+	         System.out.println(options);}
+	      Select country=new Select(driver.findElement(By.id("country")));
+			country.selectByVisibleText("India");
+	      
+			 WebElement o = country.getFirstSelectedOption();
+		      String selectedoption = o.getText();
+		      System.out.println("Selected element: " + selectedoption);
+	      
+		      String Actualcountry = selectedoption;
+		      String Expectedcountry = "India";
+		      Assert.assertEquals(Expectedcountry, Actualcountry);
+	      System.out.println("expected is "+Expectedcountry );
+	      System.out.println("actual is"+Actualcountry);
+	     
+			
+		driver.close();
+		
+		
+	
+	}
+
+}
+Console:
+[RemoteTestNG] detected TestNG version 6.14.3
+[TestNGContentHandler] [WARN] It is strongly recommended to add "<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >" at the top of your file, otherwise TestNG may fail or not work as expected.
+Starting ChromeDriver 93.0.4577.63 (ff5c0da2ec0adeaed5550e6c7e98417dac77d98a-refs/branch-heads/4577@{#1135}) on port 44071
+Only local connections are allowed.
+Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
+ChromeDriver was started successfully.
+[1633689871.213][WARNING]: This version of ChromeDriver has not been tested with Chrome version 94.
+Oct 08, 2021 4:14:31 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: W3C
+We are currently on the following URLhttps://register.rediff.com/register/register.php?FormName=user_details
+India
+American Samoa
+Andorra
+Angola
+Anguilla
+Antarctica
+Antigua And Barbuda
+Argentina
+Armenia
+Aruba
+Australia
+Austria
+Azerbaijan
+Bahamas
+Bahrain
+Bangladesh
+Barbados
+Belarus
+Belgium
+Belize
+Benin
+Bermuda
+Bhutan
+Bolivia
+Bosnia and Herzegovina
+Botswana
+Bouvet Island
+Brazil
+British Indian Ocean Territory
+Brunei
+Bulgaria
+Burkina Faso
+Burundi
+Cambodia
+Cameroon
+Canada
+Cape Verde
+Cayman Islands
+Central African Republic
+Chad
+Chile
+China
+China (Hong Kong S.A.R.)
+China (Macau S.A.R.)
+Christmas Island
+Cocos (Keeling) Islands
+Colombia
+Comoros
+Congo
+Congo Democractic Republic of the
+Cook Islands
+Costa Rica
+Cote D'Ivoire (Ivory Coast)
+Croatia (Hrvatska)
+Cuba
+Cyprus
+Czech Republic
+Denmark
+Djibouti
+Dominica
+Dominican Republic
+East Timor
+Ecuador
+Egypt
+El Salvador
+Equatorial Guinea
+Eritrea
+Estonia
+Ethiopia
+Falkland Islands (Islas Malvinas)
+Faroe Islands
+Fiji Islands
+Finland
+France
+French Guiana
+French Polynesia
+French Southern Territories
+Gabon
+Gambia
+Georgia
+Germany
+Ghana
+Gibraltar
+Greece
+Greenland
+Grenada
+Guadeloupe
+Guam
+Guatemala
+Guinea
+Guinea-Bissau
+Guyana
+Haiti
+Heard and McDonald Islands
+Honduras
+Hungary
+Iceland
+Indonesia
+Iran
+Iraq
+Ireland
+Israel
+Italy
+Jamaica
+Japan
+Jordan
+Kazakhstan
+Kenya
+Kiribati
+Korea
+Korea North
+Kuwait
+Kyrgyzstan
+Laos
+Latvia
+Lebanon
+Lesotho
+Liberia
+Libya
+Liechtenstein
+Lithuania
+Luxembourg
+Macedonia Former Yugoslav Republic of
+Madagascar
+Malawi
+Malaysia
+Maldives
+Mali
+Malta
+Marshall Islands
+Martinique
+Mauritania
+Mauritius
+Mayotte
+Mexico
+Micronesia
+Moldova
+Monaco
+Mongolia
+Montserrat
+Morocco
+Mozambique
+Myanmar
+Namibia
+Nauru
+Nepal
+Netherlands Antilles
+Netherlands
+New Caledonia
+New Zealand
+Nicaragua
+Niger
+Nigeria
+Niue
+Norfolk Island
+Northern Mariana Islands
+Norway
+Oman
+Pakistan
+Palau
+Panama
+Papua new Guinea
+Paraguay
+Peru
+Philippines
+Pitcairn Island
+Poland
+Portugal
+Puerto Rico
+Qatar
+Reunion
+Romania
+Russia
+Rwanda
+Saint Helena
+Saint Kitts And Nevis
+Saint Lucia
+Saint Pierre and Miquelon
+Saint Vincent And The Grenadines
+Samoa
+San Marino
+Sao Tome and Principe
+Saudi Arabia
+Senegal
+Seychelles
+Sierra Leone
+Singapore
+Slovakia
+Slovenia
+Solomon Islands
+Somalia
+South Africa
+South Georgia And The South Sandwich Islands
+Spain
+Sri Lanka
+Sudan
+Suriname
+Svalbard And Jan Mayen Islands
+Swaziland
+Sweden
+Switzerland
+Syria
+Taiwan
+Tajikistan
+Tanzania
+Thailand
+Togo
+Tokelau
+Tonga
+Trinidad And Tobago
+Tunisia
+Turkey
+Turkmenistan
+Turks And Caicos Islands
+Tuvalu
+Uganda
+Ukraine
+United Arab Emirates
+United Kingdom
+United States
+United States Minor Outlying Islands
+Uruguay
+Uzbekistan
+Vanuatu
+Vatican City State (Holy See)
+Venezuela
+Vietnam
+Virgin Islands (British)
+Virgin Islands (US)
+Wallis And Futuna Islands
+Western Sahara
+Yemen
+Yugoslavia
+Zambia
+Zimbabwe
+Afghanistan
+Albania
+Algeria
+Gaza Strip
+United Kingdom
+Jersey
+Kosovo
+Montenegro
+Saint Barthelemy
+Saint Martin
+Serbia
+Timor-Leste
+West Bank
+Selected element: India
+expected is India
+actual isIndia
+PASSED: testsprint2
+
+===============================================
+    Default test
+    Tests run: 1, Failures: 0, Skips: 0
+===============================================
+
+
+===============================================
+Default suite
+Total tests run: 1, Failures: 0, Skips: 0
+===============================================
+--------------------------------------------------------------
+Maven:
+package maven;
+
+	import java.util.List;
+	import java.util.concurrent.TimeUnit;
+
+	import org.openqa.selenium.By;
+	import org.openqa.selenium.WebDriver;
+	import org.openqa.selenium.WebElement;
+	import org.openqa.selenium.chrome.ChromeDriver;
+	import org.openqa.selenium.support.ui.Select;
+	import org.testng.Assert;
+
+	import org.testng.annotations.Test;
+
+	public class sprint {
+		WebDriver driver;
+
+		@Test
+		public void testsprint2()
+		{
+			System.setProperty("webdriver.chrome.driver","C:\\Users\\MYLVENKA\\Downloads\\chromedriver_win32\\chromedriver.exe");
+		
+		driver=new ChromeDriver();
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		driver.manage().window().maximize();
+
+		
+		
+		driver.get("https://mail.rediff.com/cgi-bin/login.cgi");
+		 driver.findElement(By.linkText("Create a new account")).click();
+		System.out.println("We are currently on the following URL" +driver.getCurrentUrl());
+		
+		driver.findElement(By.xpath("//*[@id=\"country\"]")).click();
+			 Select s = new Select(driver.findElement(By.xpath("//*[@id=\"country\"]")));
+			 
+			List <WebElement> op = s.getOptions();
+		      int size = op.size();
+		      for(int i =0; i<size ; i++){
+		         String options = op.get(i).getText();
+		      
+		      
+		         System.out.println(options);}
+		      Select country=new Select(driver.findElement(By.id("country")));
+				country.selectByVisibleText("India");
+		      
+				 WebElement o = country.getFirstSelectedOption();
+			      String selectedoption = o.getText();
+			      System.out.println("Selected element: " + selectedoption);
+		      
+			      String Actualcountry = selectedoption;
+			      String Expectedcountry = "India";
+			      Assert.assertEquals(Expectedcountry, Actualcountry);
+		      System.out.println("expected is "+Expectedcountry );
+		      System.out.println("actual is"+Actualcountry);
+		     
+				
+			driver.close();
+			
+			
+		
+		}
+
+	}
+
+
+Console:
+[RemoteTestNG] detected TestNG version 7.4.0
+Starting ChromeDriver 93.0.4577.63 (ff5c0da2ec0adeaed5550e6c7e98417dac77d98a-refs/branch-heads/4577@{#1135}) on port 4749
+Only local connections are allowed.
+Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
+ChromeDriver was started successfully.
+[1633690403.269][WARNING]: This version of ChromeDriver has not been tested with Chrome version 94.
+Oct 08, 2021 4:23:23 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: W3C
+We are currently on the following URLhttps://register.rediff.com/register/register.php?FormName=user_details
+India
+American Samoa
+Andorra
+Angola
+Anguilla
+Antarctica
+Antigua And Barbuda
+Argentina
+Armenia
+Aruba
+Australia
+Austria
+Azerbaijan
+Bahamas
+Bahrain
+Bangladesh
+Barbados
+Belarus
+Belgium
+Belize
+Benin
+Bermuda
+Bhutan
+Bolivia
+Bosnia and Herzegovina
+Botswana
+Bouvet Island
+Brazil
+British Indian Ocean Territory
+Brunei
+Bulgaria
+Burkina Faso
+Burundi
+Cambodia
+Cameroon
+Canada
+Cape Verde
+Cayman Islands
+Central African Republic
+Chad
+Chile
+China
+China (Hong Kong S.A.R.)
+China (Macau S.A.R.)
+Christmas Island
+Cocos (Keeling) Islands
+Colombia
+Comoros
+Congo
+Congo Democractic Republic of the
+Cook Islands
+Costa Rica
+Cote D'Ivoire (Ivory Coast)
+Croatia (Hrvatska)
+Cuba
+Cyprus
+Czech Republic
+Denmark
+Djibouti
+Dominica
+Dominican Republic
+East Timor
+Ecuador
+Egypt
+El Salvador
+Equatorial Guinea
+Eritrea
+Estonia
+Ethiopia
+Falkland Islands (Islas Malvinas)
+Faroe Islands
+Fiji Islands
+Finland
+France
+French Guiana
+French Polynesia
+French Southern Territories
+Gabon
+Gambia
+Georgia
+Germany
+Ghana
+Gibraltar
+Greece
+Greenland
+Grenada
+Guadeloupe
+Guam
+Guatemala
+Guinea
+Guinea-Bissau
+Guyana
+Haiti
+Heard and McDonald Islands
+Honduras
+Hungary
+Iceland
+Indonesia
+Iran
+Iraq
+Ireland
+Israel
+Italy
+Jamaica
+Japan
+Jordan
+Kazakhstan
+Kenya
+Kiribati
+Korea
+Korea North
+Kuwait
+Kyrgyzstan
+Laos
+Latvia
+Lebanon
+Lesotho
+Liberia
+Libya
+Liechtenstein
+Lithuania
+Luxembourg
+Macedonia Former Yugoslav Republic of
+Madagascar
+Malawi
+Malaysia
+Maldives
+Mali
+Malta
+Marshall Islands
+Martinique
+Mauritania
+Mauritius
+Mayotte
+Mexico
+Micronesia
+Moldova
+Monaco
+Mongolia
+Montserrat
+Morocco
+Mozambique
+Myanmar
+Namibia
+Nauru
+Nepal
+Netherlands Antilles
+Netherlands
+New Caledonia
+New Zealand
+Nicaragua
+Niger
+Nigeria
+Niue
+Norfolk Island
+Northern Mariana Islands
+Norway
+Oman
+Pakistan
+Palau
+Panama
+Papua new Guinea
+Paraguay
+Peru
+Philippines
+Pitcairn Island
+Poland
+Portugal
+Puerto Rico
+Qatar
+Reunion
+Romania
+Russia
+Rwanda
+Saint Helena
+Saint Kitts And Nevis
+Saint Lucia
+Saint Pierre and Miquelon
+Saint Vincent And The Grenadines
+Samoa
+San Marino
+Sao Tome and Principe
+Saudi Arabia
+Senegal
+Seychelles
+Sierra Leone
+Singapore
+Slovakia
+Slovenia
+Solomon Islands
+Somalia
+South Africa
+South Georgia And The South Sandwich Islands
+Spain
+Sri Lanka
+Sudan
+Suriname
+Svalbard And Jan Mayen Islands
+Swaziland
+Sweden
+Switzerland
+Syria
+Taiwan
+Tajikistan
+Tanzania
+Thailand
+Togo
+Tokelau
+Tonga
+Trinidad And Tobago
+Tunisia
+Turkey
+Turkmenistan
+Turks And Caicos Islands
+Tuvalu
+Uganda
+Ukraine
+United Arab Emirates
+United Kingdom
+United States
+United States Minor Outlying Islands
+Uruguay
+Uzbekistan
+Vanuatu
+Vatican City State (Holy See)
+Venezuela
+Vietnam
+Virgin Islands (British)
+Virgin Islands (US)
+Wallis And Futuna Islands
+Western Sahara
+Yemen
+Yugoslavia
+Zambia
+Zimbabwe
+Afghanistan
+Albania
+Algeria
+Gaza Strip
+United Kingdom
+Jersey
+Kosovo
+Montenegro
+Saint Barthelemy
+Saint Martin
+Serbia
+Timor-Leste
+West Bank
+Selected element: India
+expected is India
+actual isIndia
+PASSED: testsprint2
+
+===============================================
+    Default test
+    Tests run: 1, Failures: 0, Skips: 0
+===============================================
+
+
+===============================================
+Default suite
+Total tests run: 1, Passes: 1, Failures: 0, Skips: 0
+===============================================
+
+Selinium Grid:
+package gridtest;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
+
+public class gridtest {
+	public static WebDriver driver;
+	//public static WebDriver driverfx;
+	public static void main(String[] args) throws InterruptedException, MalformedURLException {
+		// TODO Auto-generated method stub
+
+		String URL = "https://mail.rediff.com/cgi-bin/login.cgi ";
+		String hub = "http://192.168.0.184:4445/wd/hub";
+		
+		DesiredCapabilities cap=new DesiredCapabilities();
+		cap.setBrowserName("chrome");
+		
+		driver = new RemoteWebDriver(new URL(hub), cap);
+				  	 	 
+		driver.navigate().to(URL);
+		
+		String Title=driver.getTitle();
+		System.out.println("The Title is: " + Title);
+		Thread.sleep(5000);
+		driver.close();
+	}
+}
+
+Console:
+Oct 09, 2021 2:05:15 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: W3C
+The Title is: Rediffmail
+----------------------------------------------------------------------------------------------------
+data driven:
+
+	package basic;
+
+	import java.io.FileInputStream;
+	import java.io.IOException;
+	import java.util.List;
+	import java.util.Properties;
+	import java.util.concurrent.TimeUnit;
+
+	import org.openqa.selenium.By;
+	import org.openqa.selenium.WebDriver;
+	import org.openqa.selenium.WebElement;
+	import org.openqa.selenium.chrome.ChromeDriver;
+	import org.openqa.selenium.support.ui.Select;
+	import org.testng.Assert;
+	import org.testng.annotations.Test;
+
+		public class rediff{
+			WebDriver driver;
+
+			@Test
+			public void testsprint2() throws IOException
+			{
+				System.setProperty("webdriver.chrome.driver","C:\\Users\\MYLVENKA\\Downloads\\chromedriver_win32 (1)\\chromedriver.exe");
+			
+			driver=new ChromeDriver();
+			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+			driver.manage().window().maximize();
+
+			
+			driver.get("https://mail.rediff.com/cgi-bin/login.cgi");
+			String currentdir = System.getProperty("user.dir");
+			Properties pro =new Properties();
+			FileInputStream file=new FileInputStream(currentdir+"\\src\\test\\java\\basic\\properties.txt");
+			pro.load(file);
+			WebElement read = driver.findElement(By.linkText(pro.getProperty("G")));
+			read.click();
+			//driver.findElement(By.linkText("Create a new account")).click();
+			System.out.println("We are currently on the following URL" +driver.getCurrentUrl());
+
+			
+			driver.findElement(By.xpath("//*[@id=\"country\"]")).click();
+				 Select s = new Select(driver.findElement(By.xpath("//*[@id=\"country\"]")));
+				 
+				List <WebElement> op = s.getOptions();
+			      int size = op.size();
+			      for(int i =0; i<size ; i++){
+			         String options = op.get(i).getText();
+			      
+			      
+			         System.out.println(options);}
+			      Select country=new Select(driver.findElement(By.id("country")));
+					country.selectByVisibleText("India");
+			      
+					 WebElement o = country.getFirstSelectedOption();
+				      String selectedoption = o.getText();
+				      System.out.println("Selected element: " + selectedoption);\\selected country and the following one
+			      
+				      String Actualcountry = selectedoption;
+				      String Expectedcountry = "India";
+				      Assert.assertEquals(Expectedcountry, Actualcountry);// assert equal detremines the same countries
+			      System.out.println("expected is "+Expectedcountry );
+			      System.out.println("actual is"+Actualcountry);
+			     
+					
+				driver.close();
+				
+				
+			
+			}
+
+		}
+
+Console:
+[RemoteTestNG] detected TestNG version 6.14.3
+[TestNGContentHandler] [WARN] It is strongly recommended to add "<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >" at the top of your file, otherwise TestNG may fail or not work as expected.
+Starting ChromeDriver 94.0.4606.61 (418b78f5838ed0b1c69bb4e51ea0252171854915-refs/branch-heads/4606@{#1204}) on port 34288
+Only local connections are allowed.
+Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
+ChromeDriver was started successfully.
+Oct 11, 2021 11:58:36 AM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: W3C
+We are currently on the following URLhttps://register.rediff.com/register/register.php?FormName=user_details
+India
+American Samoa
+Andorra
+Angola
+Anguilla
+Antarctica
+Antigua And Barbuda
+Argentina
+Armenia
+Aruba
+Australia
+Austria
+Azerbaijan
+Bahamas
+Bahrain
+Bangladesh
+Barbados
+Belarus
+Belgium
+Belize
+Benin
+Bermuda
+Bhutan
+Bolivia
+Bosnia and Herzegovina
+Botswana
+Bouvet Island
+Brazil
+British Indian Ocean Territory
+Brunei
+Bulgaria
+Burkina Faso
+Burundi
+Cambodia
+Cameroon
+Canada
+Cape Verde
+Cayman Islands
+Central African Republic
+Chad
+Chile
+China
+China (Hong Kong S.A.R.)
+China (Macau S.A.R.)
+Christmas Island
+Cocos (Keeling) Islands
+Colombia
+Comoros
+Congo
+Congo Democractic Republic of the
+Cook Islands
+Costa Rica
+Cote D'Ivoire (Ivory Coast)
+Croatia (Hrvatska)
+Cuba
+Cyprus
+Czech Republic
+Denmark
+Djibouti
+Dominica
+Dominican Republic
+East Timor
+Ecuador
+Egypt
+El Salvador
+Equatorial Guinea
+Eritrea
+Estonia
+Ethiopia
+Falkland Islands (Islas Malvinas)
+Faroe Islands
+Fiji Islands
+Finland
+France
+French Guiana
+French Polynesia
+French Southern Territories
+Gabon
+Gambia
+Georgia
+Germany
+Ghana
+Gibraltar
+Greece
+Greenland
+Grenada
+Guadeloupe
+Guam
+Guatemala
+Guinea
+Guinea-Bissau
+Guyana
+Haiti
+Heard and McDonald Islands
+Honduras
+Hungary
+Iceland
+Indonesia
+Iran
+Iraq
+Ireland
+Israel
+Italy
+Jamaica
+Japan
+Jordan
+Kazakhstan
+Kenya
+Kiribati
+Korea
+Korea North
+Kuwait
+Kyrgyzstan
+Laos
+Latvia
+Lebanon
+Lesotho
+Liberia
+Libya
+Liechtenstein
+Lithuania
+Luxembourg
+Macedonia Former Yugoslav Republic of
+Madagascar
+Malawi
+Malaysia
+Maldives
+Mali
+Malta
+Marshall Islands
+Martinique
+Mauritania
+Mauritius
+Mayotte
+Mexico
+Micronesia
+Moldova
+Monaco
+Mongolia
+Montserrat
+Morocco
+Mozambique
+Myanmar
+Namibia
+Nauru
+Nepal
+Netherlands Antilles
+Netherlands
+New Caledonia
+New Zealand
+Nicaragua
+Niger
+Nigeria
+Niue
+Norfolk Island
+Northern Mariana Islands
+Norway
+Oman
+Pakistan
+Palau
+Panama
+Papua new Guinea
+Paraguay
+Peru
+Philippines
+Pitcairn Island
+Poland
+Portugal
+Puerto Rico
+Qatar
+Reunion
+Romania
+Russia
+Rwanda
+Saint Helena
+Saint Kitts And Nevis
+Saint Lucia
+Saint Pierre and Miquelon
+Saint Vincent And The Grenadines
+Samoa
+San Marino
+Sao Tome and Principe
+Saudi Arabia
+Senegal
+Seychelles
+Sierra Leone
+Singapore
+Slovakia
+Slovenia
+Solomon Islands
+Somalia
+South Africa
+South Georgia And The South Sandwich Islands
+Spain
+Sri Lanka
+Sudan
+Suriname
+Svalbard And Jan Mayen Islands
+Swaziland
+Sweden
+Switzerland
+Syria
+Taiwan
+Tajikistan
+Tanzania
+Thailand
+Togo
+Tokelau
+Tonga
+Trinidad And Tobago
+Tunisia
+Turkey
+Turkmenistan
+Turks And Caicos Islands
+Tuvalu
+Uganda
+Ukraine
+United Arab Emirates
+United Kingdom
+United States
+United States Minor Outlying Islands
+Uruguay
+Uzbekistan
+Vanuatu
+Vatican City State (Holy See)
+Venezuela
+Vietnam
+Virgin Islands (British)
+Virgin Islands (US)
+Wallis And Futuna Islands
+Western Sahara
+Yemen
+Yugoslavia
+Zambia
+Zimbabwe
+Afghanistan
+Albania
+Algeria
+Gaza Strip
+United Kingdom
+Jersey
+Kosovo
+Montenegro
+Saint Barthelemy
+Saint Martin
+Serbia
+Timor-Leste
+West Bank
+Selected element: India
+expected is India
+actual isIndia
+PASSED: testsprint2
+
+===============================================
+    Default test
+    Tests run: 1, Failures: 0, Skips: 0
+===============================================
+
+
+===============================================
+Default suite
+Total tests run: 1, Failures: 0, Skips: 0
+===============================================
+-----------------------------------------------------------------------------------
+Behaviour
+Feature:  test dropdown functionality
+Scenario: Select country
+Given user is on the login page
+When user selects country
+And user clicks on country
+Then user gets all country names
+step
+	package step;
+	
+
+	import java.util.List;
+
+	import org.openqa.selenium.By;
+	import org.openqa.selenium.WebDriver;
+	import org.openqa.selenium.WebElement;
+	import org.openqa.selenium.chrome.ChromeDriver;
+	import org.openqa.selenium.support.ui.Select;
+
+	import io.cucumber.java.en.And;
+	import io.cucumber.java.en.Given;
+	import io.cucumber.java.en.Then;
+	import io.cucumber.java.en.When;
+
+	public class step {
+		WebDriver driver;
+		@Given("^user is on the login page$")
+		public void user_is_on_the_login_page() {
+			System.setProperty("webdriver.chrome.driver","C:\\Users\\MYLVENKA\\Downloads\\chromedriver_win32 (1)\\chromedriver.exe");
+			  driver = new ChromeDriver();
+			 driver.manage().window().maximize();
+			 driver.get("https://mail.rediff.com/cgi-bin/login.cgi");
+		}
+
+		@When("^user selects country$")
+		public void user_selects_country() {
+			 driver.findElement(By.linkText("Create a new account")).click();
+	         driver.findElement(By.xpath( "//select[@id='country']"));
+	   WebElement     countryElement= driver.findElement(By.id("country"));
+	          Select countryname= new Select(countryElement);
+	     List <WebElement>  countryoptions =countryname.getOptions();
+	      for(WebElement option : countryoptions) {
+	      	System.out.println(option.getText());
+	       }   
+		}
+
+		@And("^user clicks on country$")
+		public void user_clicks_on_country() throws InterruptedException {
+			 WebElement     countryElement= driver.findElement(By.id("country"));
+	         Select countryname= new Select(countryElement);
+			countryname.selectByIndex(0);
+	        Thread.sleep(1000);
+	        List <WebElement> selected_option = countryname.getAllSelectedOptions();
+	   for (WebElement option : selected_option) {
+	  	 System.out.println("The Selected country is:  "+option.getText());
+	   }      
+		}
+
+		@Then("^user gets all country names$")
+		public void user_gets_all_country_names() {
+		 System.out.println("Displayed all country names");
+		}
+	}
+
+test
+package testrunner;
+
+	
+	import org.junit.runner.RunWith;
+
+	import io.cucumber.junit.Cucumber;
+	import io.cucumber.junit.CucumberOptions;
+
+	@RunWith(Cucumber.class)
+	@CucumberOptions(
+			features="src/test/java/rediff/login.feature",
+			glue= {"step"}
+			)
+	public class test {
+
+	}
+
+Console:
+[RemoteTestNG] detected TestNG version 6.14.3
+[TestNGContentHandler] [WARN] It is strongly recommended to add "<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >" at the top of your file, otherwise TestNG may fail or not work as expected.
+Starting ChromeDriver 94.0.4606.61 (418b78f5838ed0b1c69bb4e51ea0252171854915-refs/branch-heads/4606@{#1204}) on port 30667
+Only local connections are allowed.
+Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
+ChromeDriver was started successfully.
+Oct 11, 2021 12:46:08 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: W3C
+We are currently on the following URLhttps://register.rediff.com/register/register.php?FormName=user_details
+India
+American Samoa
+Andorra
+Angola
+Anguilla
+Antarctica
+Antigua And Barbuda
+Argentina
+Armenia
+Aruba
+Australia
+Austria
+Azerbaijan
+Bahamas
+Bahrain
+Bangladesh
+Barbados
+Belarus
+Belgium
+Belize
+Benin
+Bermuda
+Bhutan
+Bolivia
+Bosnia and Herzegovina
+Botswana
+Bouvet Island
+Brazil
+British Indian Ocean Territory
+Brunei
+Bulgaria
+Burkina Faso
+Burundi
+Cambodia
+Cameroon
+Canada
+Cape Verde
+Cayman Islands
+Central African Republic
+Chad
+Chile
+China
+China (Hong Kong S.A.R.)
+China (Macau S.A.R.)
+Christmas Island
+Cocos (Keeling) Islands
+Colombia
+Comoros
+Congo
+Congo Democractic Republic of the
+Cook Islands
+Costa Rica
+Cote D'Ivoire (Ivory Coast)
+Croatia (Hrvatska)
+Cuba
+Cyprus
+Czech Republic
+Denmark
+Djibouti
+Dominica
+Dominican Republic
+East Timor
+Ecuador
+Egypt
+El Salvador
+Equatorial Guinea
+Eritrea
+Estonia
+Ethiopia
+Falkland Islands (Islas Malvinas)
+Faroe Islands
+Fiji Islands
+Finland
+France
+French Guiana
+French Polynesia
+French Southern Territories
+Gabon
+Gambia
+Georgia
+Germany
+Ghana
+Gibraltar
+Greece
+Greenland
+Grenada
+Guadeloupe
+Guam
+Guatemala
+Guinea
+Guinea-Bissau
+Guyana
+Haiti
+Heard and McDonald Islands
+Honduras
+Hungary
+Iceland
+Indonesia
+Iran
+Iraq
+Ireland
+Israel
+Italy
+Jamaica
+Japan
+Jordan
+Kazakhstan
+Kenya
+Kiribati
+Korea
+Korea North
+Kuwait
+Kyrgyzstan
+Laos
+Latvia
+Lebanon
+Lesotho
+Liberia
+Libya
+Liechtenstein
+Lithuania
+Luxembourg
+Macedonia Former Yugoslav Republic of
+Madagascar
+Malawi
+Malaysia
+Maldives
+Mali
+Malta
+Marshall Islands
+Martinique
+Mauritania
+Mauritius
+Mayotte
+Mexico
+Micronesia
+Moldova
+Monaco
+Mongolia
+Montserrat
+Morocco
+Mozambique
+Myanmar
+Namibia
+Nauru
+Nepal
+Netherlands Antilles
+Netherlands
+New Caledonia
+New Zealand
+Nicaragua
+Niger
+Nigeria
+Niue
+Norfolk Island
+Northern Mariana Islands
+Norway
+Oman
+Pakistan
+Palau
+Panama
+Papua new Guinea
+Paraguay
+Peru
+Philippines
+Pitcairn Island
+Poland
+Portugal
+Puerto Rico
+Qatar
+Reunion
+Romania
+Russia
+Rwanda
+Saint Helena
+Saint Kitts And Nevis
+Saint Lucia
+Saint Pierre and Miquelon
+Saint Vincent And The Grenadines
+Samoa
+San Marino
+Sao Tome and Principe
+Saudi Arabia
+Senegal
+Seychelles
+Sierra Leone
+Singapore
+Slovakia
+Slovenia
+Solomon Islands
+Somalia
+South Africa
+South Georgia And The South Sandwich Islands
+Spain
+Sri Lanka
+Sudan
+Suriname
+Svalbard And Jan Mayen Islands
+Swaziland
+Sweden
+Switzerland
+Syria
+Taiwan
+Tajikistan
+Tanzania
+Thailand
+Togo
+Tokelau
+Tonga
+Trinidad And Tobago
+Tunisia
+Turkey
+Turkmenistan
+Turks And Caicos Islands
+Tuvalu
+Uganda
+Ukraine
+United Arab Emirates
+United Kingdom
+United States
+United States Minor Outlying Islands
+Uruguay
+Uzbekistan
+Vanuatu
+Vatican City State (Holy See)
+Venezuela
+Vietnam
+Virgin Islands (British)
+Virgin Islands (US)
+Wallis And Futuna Islands
+Western Sahara
+Yemen
+Yugoslavia
+Zambia
+Zimbabwe
+Afghanistan
+Albania
+Algeria
+Gaza Strip
+United Kingdom
+Jersey
+Kosovo
+Montenegro
+Saint Barthelemy
+Saint Martin
+Serbia
+Timor-Leste
+West Bank
+Selected element: India
+expected is India
+actual isIndia
+PASSED: testsprint2
+
+===============================================
+    Default test
+    Tests run: 1, Failures: 0, Skips: 0
+===============================================
+
+
+===============================================
+Default suite
+Total tests run: 1, Failures: 0, Skips: 0
+===============================================
+
+
+
+
+
+
+

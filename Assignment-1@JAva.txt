@@ -1,0 +1,102 @@
+1. Find the Area of Rectangle using length and breadth input from user
+2. Find the Perimeter of Square using input taken from user
+3. Find the Simple interest of Amount 10000 with interest rate 3.6 pct per year and duration is 6 years
+4. Write the fibonacci series in Java program
+5. Print the table of no which is given by user
+--------------------------------------------------------------------------------------------------------
+1
+package javatutorial;
+import java.util.Scanner;
+
+public class AreaofRectangle {
+	
+	public static void main(String args[]) 
+    {   
+       
+      Scanner sc= new Scanner(System.in);
+        System.out.println("Enter the length:");
+         double l= sc.nextDouble();
+        System.out.println("Enter the breadth:");
+         double b= sc.nextDouble();
+         double  area=l*b;
+      System.out.println("Area of Rectangle is: " + area);      
+   }
+
+}
+----------------------------------------------------------------------------------------------------
+2
+package javatutorial;
+import java.util.Scanner;
+public class PerimeterofSquare {
+	
+	
+	   public static void main(String args[]) 
+	    {   
+	       
+	         Scanner s= new Scanner(System.in);
+	        
+	         System.out.println("Enter the side of the square:");
+	         
+		 double a= s.nextDouble();
+		 
+	         double  perimeter=4*a;
+	     
+		 System.out.println("perimeter of Square is: " + perimeter);      
+	   }
+	}
+-------------------------------------------------------------------------------------------------------------------
+3
+package javatutorial;
+
+public class SimpleIntrest {
+	
+	
+	   public static void main (String args[])  
+	    {   double p, r,  t,  si;  
+	              p = 10000;  r = 3.6; t = 6;  
+	               si  = (p*r*t)/100;   
+	              System.out.println("Simple Interest is: " +si);  
+	    }
+
+}
+------------------------------------------------------------------------------------------------------
+4
+package javatutorial;
+
+public class Fibonacci {
+	
+  
+		public static void main(String args[])  
+		{    
+		 int n1=0,n2=1,n3,i,count=10;    
+		 System.out.print(n1+" "+n2);//printing 0 and 1    
+		    
+		 for(i=2;i<count;++i)//loop starts from 2 because 0 and 1 are already printed    
+		 {    
+		  n3=n1+n2;    
+		  System.out.print(" "+n3);    
+		  n1=n2;    
+		  n2=n3;    
+		 }    
+		  
+		}
+		}
+---------------------------------------------------------------------------------------------------------
+5
+package javatutorial;
+import java.util.Scanner;  
+public class table {
+
+	
+	public static void main(String args[])   
+	{  
+	Scanner sc = new Scanner(System.in);  
+	System.out.print("Enter number: ");       
+	int num=sc.nextInt();   
+	for(int i=1; i <= 10; i++)  
+	{      
+	System.out.println(num+" * "+i+" = "+num*i);  
+	}  
+	}  
+	 
+	
